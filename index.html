@@ -1,104 +1,119 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World Login</title>
+  <meta charset="UTF-8">
+  <title>Hello World Login</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #1f1c2c, #928dab);
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
 
-    <style>
-        body {
-            background: #121212;
-            color: white;
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+    .box {
+      background: rgba(0, 0, 0, 0.45);
+      padding: 35px;
+      border-radius: 18px;
+      width: 340px;
+      text-align: center;
+      box-shadow: 0 0 25px rgba(0,0,0,0.4);
+    }
 
-        .box {
-            background: #1e1e1e;
-            padding: 30px;
-            border-radius: 12px;
-            width: 320px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
-        }
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-top: 12px;
+      border: none;
+      border-radius: 8px;
+      box-sizing: border-box;
+    }
 
-        input {
-            width: 100%;
-            padding: 10px;
-            margin-top: 10px;
-            border: none;
-            border-radius: 6px;
-            background: #2a2a2a;
-            color: white;
-        }
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 18px;
+      border: none;
+      border-radius: 8px;
+      background: #ff5fa2;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
 
-        button {
-            width: 100%;
-            padding: 10px;
-            margin-top: 15px;
-            border: none;
-            border-radius: 6px;
-            background: #4caf50;
-            color: white;
-            cursor: pointer;
-        }
+    button:hover {
+      background: #ff3f91;
+    }
 
-        button:hover {
-            background: #45a049;
-        }
+    #message {
+      margin-top: 25px;
+      font-size: 24px;
+      font-weight: bold;
+    }
 
-        #message {
-            margin-top: 20px;
-            text-align: center;
-        }
-    </style>
+    .love-img {
+      margin-top: 20px;
+      max-width: 100%;
+      border-radius: 14px;
+      display: none;
+    }
+  </style>
 </head>
 <body>
 
 <div class="box">
-    <h2>Hello World Login</h2>
+  <h2>Login</h2>
 
-    <input type="text" id="username" placeholder="Benutzername">
-    <input type="password" id="password" placeholder="Passwort">
+  <input type="text" id="username" placeholder="Benutzername">
+  <input type="password" id="password" placeholder="Passwort">
 
-    <button onclick="login()">Login</button>
+  <button onclick="login()">Login</button>
 
-    <div id="message"></div>
+  <div id="message"></div>
+
+  <!-- Bild: Datei muss im gleichen GitHub Ordner liegen -->
+  <img id="loveImage" class="love-img" src="picture.jpg" alt="Love picture">
 </div>
 
 <script>
-    // TEST USER
-    const users = [
-        {
-            username: "admin",
-            password: "1234"
-        },
-        {
-            username: "sebastian",
-            password: "test"
-        }
-    ];
-
-    function login() {
-
-        const username = document.getElementById("username").value;
-        const password = document.getElementById("password").value;
-
-        const foundUser = users.find(user =>
-            user.username === username &&
-            user.password === password
-        );
-
-        const message = document.getElementById("message");
-
-        if (foundUser) {
-            message.innerHTML = "<h3>Hello World!</h3><p>Login erfolgreich.</p>";
-        } else {
-            message.innerHTML = "<p style='color:red'>Falscher Login</p>";
-        }
+  const users = [
+    {
+      username: "admin",
+      password: "1234"
+    },
+    {
+      username: "sebastian",
+      password: "test"
+    },
+    {
+      username: "Ani",
+      password: "1605"
     }
+  ];
+
+  function login() {
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+    const message = document.getElementById("message");
+    const loveImage = document.getElementById("loveImage");
+
+    const foundUser = users.find(user =>
+      user.username === username &&
+      user.password === password
+    );
+
+    if (foundUser) {
+      message.innerHTML = "Luv &lt;3";
+      loveImage.style.display = "block";
+    } else {
+      message.innerHTML = "<span style='color:#ffb3b3'>Falscher Login</span>";
+      loveImage.style.display = "none";
+    }
+  }
 </script>
 
 </body>
