@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World Login</title>
+
+    <style>
+        body {
+            background: #121212;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .box {
+            background: #1e1e1e;
+            padding: 30px;
+            border-radius: 12px;
+            width: 320px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 6px;
+            background: #2a2a2a;
+            color: white;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 6px;
+            background: #4caf50;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        #message {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>Hello World Login</h2>
+
+    <input type="text" id="username" placeholder="Benutzername">
+    <input type="password" id="password" placeholder="Passwort">
+
+    <button onclick="login()">Login</button>
+
+    <div id="message"></div>
+</div>
+
+<script>
+    // TEST USER
+    const users = [
+        {
+            username: "admin",
+            password: "1234"
+        },
+        {
+            username: "sebastian",
+            password: "test"
+        }
+    ];
+
+    function login() {
+
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
+        const foundUser = users.find(user =>
+            user.username === username &&
+            user.password === password
+        );
+
+        const message = document.getElementById("message");
+
+        if (foundUser) {
+            message.innerHTML = "<h3>Hello World!</h3><p>Login erfolgreich.</p>";
+        } else {
+            message.innerHTML = "<p style='color:red'>Falscher Login</p>";
+        }
+    }
+</script>
+
+</body>
+</html>
